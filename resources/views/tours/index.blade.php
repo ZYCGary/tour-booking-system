@@ -27,9 +27,9 @@
                     {{-- Tour list end --}}
 
                     {{-- Pagination --}}
-                    {{--<div class="mt-5">
+                    <div class="mt-5">
                         {{ $tours->links() }}
-                    </div>--}}
+                    </div>
                     {{-- Pagination end --}}
 
                 </div>

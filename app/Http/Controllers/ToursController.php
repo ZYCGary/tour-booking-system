@@ -9,7 +9,8 @@ class ToursController extends Controller
 {
     public function index()
     {
-        $tours = Tour::all();
+        $tours = Tour::public()->paginate(20);
+
         return view('tours.index', [
             'tours' => $tours
         ]);
