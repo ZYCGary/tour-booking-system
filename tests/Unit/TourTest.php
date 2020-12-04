@@ -51,4 +51,20 @@ class TourTest extends TestCase
         $this->assertFalse($drafts->contains($publicTour));
     }
 
+    /**
+     * Testing a tour has and only has one creator.
+     *
+     * Testing the one-to-many relationship with User.
+     *
+     * @test
+     * @covers \App\Models\Tour
+     */
+    public function a_tour_belongs_to_a_creator()
+    {
+        $tour = create(Tour::class);
+
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Relations\BelongsTo', $tour->creator());
+        $this->assertInstanceOf('App\Models\User', $tour->creator);
+    }
+
 }

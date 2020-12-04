@@ -10,7 +10,7 @@ class ToursController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index');
+        $this->middleware('auth')->except('index', 'show');
     }
 
     public function index()
@@ -19,6 +19,15 @@ class ToursController extends Controller
 
         return view('tours.index', [
             'tours' => $tours
+        ]);
+    }
+
+    public function show($tourId)
+    {
+        $tour = Tour::public()->findOrFail($tourId);
+
+        return view('tours.show', [
+            'tour' => $tour
         ]);
     }
 

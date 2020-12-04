@@ -41,4 +41,32 @@ class ViewToursTest extends TestCase
         $response->assertSee($publicTour->name);
         $response->assertDontSee($draftTour->name);
     }
+
+    /**
+     * Testing a user can view the detail of a public tour.
+     *
+     * @test
+     * @covers \App\Http\Controllers\ToursController
+     */
+    public function user_can_view_a_public_tour()
+    {
+        $tour = Tour::factory()->public()->create();
+
+        $this->get(route('tours.show', ['tour' => $tour->id]))
+            ->assertStatus(200)
+            ->assertSee($tour->name);
+    }
+
+    /**
+     * Testing a user can only view the detail of a public tour.
+     *
+     * @test
+     * @covers \App\Http\Controllers\ToursController
+     */
+    public function user_can_only_view_a_public_tour()
+    {
+
+    }
+
+
 }
