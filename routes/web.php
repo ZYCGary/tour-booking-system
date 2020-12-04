@@ -23,6 +23,7 @@ Route::post('/tours', [ToursController::class, 'store'])->name('tours.store');
 Route::get('/tours/create', [ToursController::class, 'create'])->name('tours.create');
 Route::get('/tours/{tour}', [ToursController::class, 'show'])->name('tours.show');
 Route::get('/tours/{tour}/edit', [ToursController::class, 'edit'])->name('tours.edit');
+Route::put('/tours/{tour}', [ToursController::class, 'update'])->name('tours.update');
 Route::post('/tours/{tour}/publish', [ToursController::class, 'publish'])->name('tours.publish');
 
 Route::get('/drafts', [DraftsController::class, 'index'])->name('drafts.index');

@@ -58,6 +58,22 @@ class ToursController extends Controller
         ]);
     }
 
+    public function update(Request $request, Tour $tour)
+    {
+        $this->authorize('update', $tour);
+
+        $tour->update([
+            'name' => $request->input('name'),
+            'itinerary' => $request->input('itinerary')
+        ]);
+
+        if ($tour->status === 'public') {
+            return redirect(route('tours.show', ['tour' => $tour->id]));
+        }
+
+        return redirect(route('drafts.index'));
+    }
+
     public function publish(Tour $tour)
     {
         $this->authorize('update', $tour);

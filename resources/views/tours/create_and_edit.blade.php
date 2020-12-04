@@ -13,30 +13,36 @@
                     </h2>
 
                     <hr>
+                    @if($tour->exists)
+                        <form action="{{ route('tours.update', ['tour' => $tour->id]) }}" method="POST"
+                              accept-charset="UTF-8">
+                            @method('PUT')
+                            @else
+                                <form action="{{ route('tours.store') }}" method="POST" accept-charset="UTF-8">
+                                    @endif
 
-                    <form action="{{ route('tours.store') }}" method="POST" accept-charset="UTF-8">
+                                    @csrf
 
-                        {{ csrf_field() }}
+                                    @include('shared._error')
 
-                        @include('shared._error')
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" name="name"
+                                               value="{{ old('name', $tour->name) }}"
+                                               placeholder="Please enter a name" required dusk="question-title"/>
+                                    </div>
 
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="name" value="{{ old('name', $tour->name) }}"
-                                   placeholder="Please enter a name" required dusk="question-title"/>
-                        </div>
-
-                        <div class="form-group">
+                                    <div class="form-group">
                             <textarea name="itinerary" class="form-control" id="editor" rows="6"
                                       placeholder="Please enter an itinerary for the tour." required
                                       dusk="question-content">{{ old('content', $tour->itinerary ) }}</textarea>
-                        </div>
+                                    </div>
 
-                        <div class="well well-sm">
-                            <button type="submit" class="btn btn-primary" dusk="question-submit"><i
-                                    class="far fa-save mr-2" aria-hidden="true"></i> SAVE
-                            </button>
-                        </div>
-                    </form>
+                                    <div class="well well-sm">
+                                        <button type="submit" class="btn btn-primary" dusk="question-submit"><i
+                                                class="far fa-save mr-2" aria-hidden="true"></i> SAVE
+                                        </button>
+                                    </div>
+                                </form>
                 </div>
             </div>
         </div>
