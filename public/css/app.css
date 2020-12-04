@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
@@ -17059,10 +17059,10 @@ body {
 .navbar-static-top {
   border-color: #e7e7e7;
   background-color: #fff;
-  box-shadow: 0 1px 11px 2px rgba(42, 42, 42, 0.1);
+  box-shadow: 0px 1px 11px 2px rgba(42, 42, 42, 0.1);
   border-bottom: 1px solid #e8e8e8;
   margin-bottom: 40px;
-  margin-top: 0;
+  margin-top: 0px;
 }
 
 /* Sticky footer styles */

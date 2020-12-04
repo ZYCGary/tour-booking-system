@@ -41,5 +41,4 @@ class ViewToursTest extends TestCase
         $response->assertSee($publicTour->name);
         $response->assertDontSee($draftTour->name);
     }
-
 }

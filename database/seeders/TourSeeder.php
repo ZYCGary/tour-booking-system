@@ -21,10 +21,12 @@ class TourSeeder extends Seeder
 
         foreach (range(1, 100) as $index) {
             $tour = Tour::factory()->make([
+                'user_id' => rand(1, 10),
                 'status' => $status[array_rand($status)]
             ]);
 
             $data[] = [
+                'user_id' => $tour->user_id,
                 'name' => $tour->name,
                 'itinerary' => $tour->itinerary,
                 'status' => $tour->status,
