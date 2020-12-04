@@ -65,8 +65,11 @@ class ViewToursTest extends TestCase
      */
     public function user_can_only_view_a_public_tour()
     {
-        
+        $this->withExceptionHandling();
+
+        $draft = Tour::factory()->draft()->create();
+
+        $this->get(route('tours.show', ['tour' => $draft->id]))
+            ->assertStatus(404);
     }
-
-
 }
