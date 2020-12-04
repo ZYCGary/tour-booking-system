@@ -39,4 +39,5 @@
     3. Only the tour creator can publish the tour draft
 4. Edit a tour draft:
     1. A guest cannot edit a tour draft
-    2. A logged-in user can edit a tour draft he/she made.
+    2. A logged-in user can edit a tour he/she made.
+    3. A logged-in user can only edit his/her tours.

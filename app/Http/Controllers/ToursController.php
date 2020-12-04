@@ -49,6 +49,15 @@ class ToursController extends Controller
         ]);
     }
 
+    public function edit(Tour $tour)
+    {
+        $this->authorize('update', $tour);
+
+        return view('tours.create_and_edit', [
+            'tour' => $tour
+        ]);
+    }
+
     public function publish(Tour $tour)
     {
         $tour->update([
