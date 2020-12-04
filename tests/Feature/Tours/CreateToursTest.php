@@ -68,7 +68,7 @@ class CreateToursTest extends TestCase
         $this->assertCount(0, Tour::all());
 
         $this->post(route('tours.store', $tour->toArray()))
-            ->assertRedirect(route('drafts.index'));
+            ->assertRedirect(route('listings.index'));
 
         $this->assertCount(1, Tour::all());
     }

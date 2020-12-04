@@ -31,27 +31,6 @@ class TourTest extends TestCase
     }
 
     /**
-     * Testing tours with status as 'draft' are draft tours that are invisible to users.
-     *
-     * @test
-     * @covers \App\Models\Tour
-     */
-    public function tours_with_status_as_draft_are_draft_tours()
-    {
-        $user = create(User::class);
-
-        $draft1 = Tour::factory()->draft()->create(['user_id'=>$user->id]);
-        $draft2 = Tour::factory()->draft()->create(['user_id'=>$user->id]);
-        $publicTour = Tour::factory()->public()->create();
-
-        $drafts = Tour::drafts($user)->get();
-
-        $this->assertTrue($drafts->contains($draft1));
-        $this->assertTrue($drafts->contains($draft2));
-        $this->assertFalse($drafts->contains($publicTour));
-    }
-
-    /**
      * Testing a tour has and only has one creator.
      *
      * Testing the one-to-many relationship with User.
@@ -83,5 +62,4 @@ class TourTest extends TestCase
 
         $this->asserttrue($tour->isPublic());
     }
-
 }

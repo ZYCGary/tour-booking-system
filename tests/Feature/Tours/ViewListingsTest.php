@@ -40,7 +40,7 @@ class ViewListingsTest extends TestCase
             'user_id' => auth()->id()
         ]);
 
-        $this->get(route('drafts.index'))
+        $this->get(route('listings.index'))
             ->assertStatus(200)
             ->assertSee($tour->name);
     }
@@ -61,7 +61,7 @@ class ViewListingsTest extends TestCase
 
         $this->signIn($user1);
 
-        $this->get(route('drafts.index'))
+        $this->get(route('listings.index'))
             ->assertStatus(200)
             ->assertSee($draftByUser1->name)
             ->assertDontSee($draftByUser2->name);
