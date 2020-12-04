@@ -39,7 +39,7 @@ class ToursController extends Controller
             'itinerary' => $request->input('itinerary')
         ]);
 
-        return redirect(route('drafts.index'));
+        return redirect(route('listings.index'));
     }
 
     public function create(Tour $tour)

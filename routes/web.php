@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DraftsController;
+use App\Http\Controllers\ListingsController;
 use App\Http\Controllers\ToursController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +26,6 @@ Route::get('/tours/{tour}/edit', [ToursController::class, 'edit'])->name('tours.
 Route::put('/tours/{tour}', [ToursController::class, 'update'])->name('tours.update');
 Route::post('/tours/{tour}/publish', [ToursController::class, 'publish'])->name('tours.publish');
 
-Route::get('/drafts', [DraftsController::class, 'index'])->name('drafts.index');
+Route::get('/listings', [ListingsController::class, 'index'])->name('listings.index');
 
 

@@ -6,7 +6,7 @@ use App\Models\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DraftsController extends Controller
+class ListingsController extends Controller
 {
     public function __construct()
     {
@@ -15,10 +15,10 @@ class DraftsController extends Controller
 
     public function index()
     {
-        $drafts = Tour::drafts(Auth::user())->get();
+        $listings = Tour::Listings(Auth::user())->get();
 
-        return view('drafts.index', [
-            'drafts' => $drafts
+        return view('listings.index', [
+            'listings' => $listings
         ]);
     }
 }

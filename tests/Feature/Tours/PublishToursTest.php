@@ -67,5 +67,4 @@ class PublishToursTest extends TestCase
 
         $this->assertCount(0, Tour::public()->get());
     }
-
 }

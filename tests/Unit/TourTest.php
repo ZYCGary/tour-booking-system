@@ -67,4 +67,21 @@ class TourTest extends TestCase
         $this->assertInstanceOf('App\Models\User', $tour->creator);
     }
 
+    /**
+     * Testing a tour is published.
+     *
+     * @test
+     * @covers \App\Models\Tour
+     */
+    public function a_tour_is_public()
+    {
+        $tour = create(Tour::class);
+
+        $this->assertFalse($tour->isPublic());
+
+        $tour->update(['status' => 'public']);
+
+        $this->asserttrue($tour->isPublic());
+    }
+
 }

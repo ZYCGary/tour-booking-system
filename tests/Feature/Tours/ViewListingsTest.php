@@ -8,21 +8,21 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ViewDraftsTest extends TestCase
+class ViewListingsTest extends TestCase
 {
     use RefreshDatabase;
 
     /**
-     * Testing A guest cannot view the draft list.
+     * Testing A guest cannot view the tour listing.
      *
      * @test
-     * @covers \App\Http\Controllers\DraftsController
+     * @covers \App\Http\Controllers\ListingsController
      */
     public function guest_cannot_view_draft_list()
     {
         $this->withExceptionHandling();
 
-        $this->get(route('drafts.index'))
+        $this->get(route('listings.index'))
             ->assertRedirect(route('login'));
     }
 
@@ -30,7 +30,7 @@ class ViewDraftsTest extends TestCase
      * Testing a logged-in user can view the list of tours he/she created.
      *
      * @test
-     * @covers \App\Http\Controllers\DraftsController
+     * @covers \App\Http\Controllers\ListingsController
      */
     public function logged_in_user_can_view_draft_list()
     {
@@ -49,7 +49,7 @@ class ViewDraftsTest extends TestCase
      * Testing Only the tour creator can view his/her draft list.
      *
      * @test
-     * @covers \App\Http\Controllers\DraftsController
+     * @covers \App\Http\Controllers\ListingsController
      */
     public function only_the_creator_can_view_draft_list()
     {
