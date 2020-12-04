@@ -23,20 +23,21 @@
                                             </a>
 
 
-                                            <a class="float-right" href="{{ route('tours.edit', ['tour' => $listing]) }}">
+                                            <a class="float-right"
+                                               href="{{ route('tours.edit', ['tour' => $listing]) }}">
                                                 <button type="submit" class="btn btn-success btn-sm ml-2">Edit
                                                 </button>
                                             </a>
 
-                                            @if($listing->isPublic())
-                                            <a class="float-right">
-                                                <form action="{{ route('tours.publish', ['tour'=> $listing]) }}"
-                                                      method="POST" accept-charset="UTF-8">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-primary btn-sm">PUBLISH
-                                                    </button>
-                                                </form>
-                                            </a>
+                                            @if(!$listing->isPublic())
+                                                <a class="float-right">
+                                                    <form action="{{ route('tours.publish', ['tour'=> $listing]) }}"
+                                                          method="POST" accept-charset="UTF-8">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-primary btn-sm">PUBLISH
+                                                        </button>
+                                                    </form>
+                                                </a>
                                             @endif
 
                                         </div>
