@@ -19,9 +19,9 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/tours', [ToursController::class, 'index'])->name('tours.index');
-Route::get('/tours/{tour}', [ToursController::class, 'show'])->name('tours.show');
 Route::post('/tours', [ToursController::class, 'store'])->name('tours.store');
 Route::get('/tours/create', [ToursController::class, 'create'])->name('tours.create');
+Route::get('/tours/{tour}', [ToursController::class, 'show'])->name('tours.show');
 Route::get('/tours/{tour}/edit', [ToursController::class, 'edit'])->name('tours.edit');
 Route::post('/tours/{tour}/publish', [ToursController::class, 'publish'])->name('tours.publish');
 

@@ -65,7 +65,7 @@ class ViewToursTest extends TestCase
      */
     public function user_can_only_view_a_public_tour()
     {
-
+        
     }
 
 

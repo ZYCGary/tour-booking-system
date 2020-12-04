@@ -60,6 +60,8 @@ class ToursController extends Controller
 
     public function publish(Tour $tour)
     {
+        $this->authorize('update', $tour);
+
         $tour->update([
             'status' => 'public'
         ]);
