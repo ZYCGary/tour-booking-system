@@ -34,8 +34,9 @@
     6. A logged-in user can view the list of tours he/she created
     7. Only the tour creator can view the list of tours he/she created
 3. Publish a tour draft:
-    4. A guest cannot publish a tour draft
-    5. A logged-in user can publish a tour draft he/she created
+    1. A guest cannot publish a tour draft
+    2. A logged-in user can publish a tour draft he/she created
+    3. Only the tour creator can publish the tour draft
 4. Edit a tour draft:
     1. A guest cannot edit a tour draft
     2. A logged-in user can edit a tour draft he/she made.

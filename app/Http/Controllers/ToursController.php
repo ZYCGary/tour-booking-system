@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tour;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class ToursController extends Controller
@@ -37,5 +38,14 @@ class ToursController extends Controller
         return view('tours.create_and_edit', [
             'tour' => $tour
         ]);
+    }
+
+    public function publish(Tour $tour)
+    {
+        $tour->update([
+            'status' => 'public'
+        ]);
+
+        return redirect(route('tours.show', ['tour' => $tour->id]));
     }
 }
