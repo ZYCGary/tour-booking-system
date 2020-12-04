@@ -15,6 +15,7 @@ class CreateToursTable extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('itinerary');
             $table->string('status')->default('draft');

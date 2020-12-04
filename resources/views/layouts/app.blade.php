@@ -32,4 +32,5 @@
     <flash message="{{ session('flash') }}"></flash>
 </div>
 </body>
+
 </html>

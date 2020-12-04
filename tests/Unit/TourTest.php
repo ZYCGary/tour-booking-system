@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Tour;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -29,4 +30,36 @@ class TourTest extends TestCase
         $this->assertFalse($publicTours->contains($draftTour));
     }
 
+    /**
+     * Testing a tour has and only has one creator.
+     *
+     * Testing the one-to-many relationship with User.
+     *
+     * @test
+     * @covers \App\Models\Tour
+     */
+    public function a_tour_belongs_to_a_creator()
+    {
+        $tour = create(Tour::class);
+
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Relations\BelongsTo', $tour->creator());
+        $this->assertInstanceOf('App\Models\User', $tour->creator);
+    }
+
+    /**
+     * Testing a tour is published.
+     *
+     * @test
+     * @covers \App\Models\Tour
+     */
+    public function a_tour_is_public()
+    {
+        $tour = create(Tour::class);
+
+        $this->assertFalse($tour->isPublic());
+
+        $tour->update(['status' => 'public']);
+
+        $this->asserttrue($tour->isPublic());
+    }
 }
