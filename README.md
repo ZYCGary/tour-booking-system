@@ -24,7 +24,9 @@
 
 ### Tours
 
-1. A user can view the list of "Public" tours
+1. View tours
+    1. A user can view the list of "Public" tours
+    2. A user can view the detail of "Public" tours
 2. Create a tour draft:
     1. A guest cannot view tour creation page
     2. A logged-in user can view tour creation page

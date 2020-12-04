@@ -58,5 +58,16 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-3 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <a href="{{ route('tours.create') }}">
+                        <button type="submit" class="btn btn-success btn ml-2">Create A Tour
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
