@@ -5,6 +5,8 @@
  */
 
 require('./bootstrap');
+global.moment = require('moment');
+require('tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min');
 
 window.Vue = require('vue');
 
@@ -19,7 +21,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('tour-form', require('./components/TourForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

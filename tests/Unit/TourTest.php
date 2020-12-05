@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\Tour;
+use App\Models\TourDate;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -61,5 +62,22 @@ class TourTest extends TestCase
         $tour->update(['status' => 'public']);
 
         $this->asserttrue($tour->isPublic());
+    }
+
+    /**
+     * Testing A tour has many tour dates.
+     *
+     * Testing the one-to-many relationship with TourDate.
+     *
+     * @test
+     * @covers \App\Models\Tour
+     */
+    public function a_tour_has_many_tour_dates()
+    {
+        $tour = create(Tour::class);
+
+        create(TourDate::class, ['tour_id' => $tour->id], 2);
+
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Relations\HasMany', $tour->dates());
     }
 }

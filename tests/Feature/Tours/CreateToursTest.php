@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Tour;
+use App\Models\TourDate;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -63,7 +64,10 @@ class CreateToursTest extends TestCase
     {
         $this->signIn();
 
-        $tour = make(Tour::class);
+        $tour = make(Tour::class, [
+            'user_id' => auth()->id(),
+            'dates' => '2020-12-05,2020-12-15'
+        ]);
 
         $this->assertCount(0, Tour::all());
 
@@ -72,4 +76,25 @@ class CreateToursTest extends TestCase
 
         $this->assertCount(1, Tour::all());
     }
+
+    /**
+     * Testing Summary
+     *
+     * @test
+     * @covers \App\Http\Controllers\ToursController
+     */
+    public function create_tour_dates_when_create_a_tour()
+    {
+        $this->signIn();
+        $tour = make(Tour::class, [
+            'user_id' => auth()->id(),
+            'dates' => '2020-12-05,2020-12-15'
+        ]);
+
+        $this->post(route('tours.store', $tour->toArray()))
+            ->assertRedirect(route('listings.index'));
+
+        $this->assertCount(2, TourDate::all());
+    }
+
 }
