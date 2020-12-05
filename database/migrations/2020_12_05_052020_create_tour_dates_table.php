@@ -19,6 +19,8 @@ class CreateTourDatesTable extends Migration
             $table->date('date');
             $table->string('status')->default('enabled');
             $table->timestamps();
+
+            $table->unique(['tour_id', 'date']);
         });
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\TourCreated;
+use App\Events\TourUpdated;
 use App\Models\Tour;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -71,18 +72,20 @@ class ToursController extends Controller
     {
         $this->authorize('update', $tour);
 
-        dd($request->input());
-
         $tour->update([
             'name' => $request->input('name'),
             'itinerary' => $request->input('itinerary')
         ]);
 
+        $dates = explode(',', $request->input('dates'));
+
+        event(new TourUpdated($tour, $dates));
+
         if ($tour->status === 'public') {
             return redirect(route('tours.show', ['tour' => $tour->id]));
         }
 
-        return redirect(route('drafts.index'));
+        return redirect(route('listings.index'));
     }
 
     public function publish(Tour $tour)

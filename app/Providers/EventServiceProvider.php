@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\TourCreated;
+use App\Events\TourUpdated;
 use App\Listeners\CreateTourDates;
+use App\Listeners\UpdateTourDates;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         TourCreated::class => [
             CreateTourDates::class,
+        ],
+        TourUpdated::class => [
+            UpdateTourDates::class
         ]
     ];
 
