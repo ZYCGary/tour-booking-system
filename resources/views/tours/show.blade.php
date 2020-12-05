@@ -15,6 +15,10 @@
                         {{ $tour->itinerary }}
                     </div>
 
+                    <div class="tour-body mt-4 mb-4">
+                        <div id="datetimepicker"></div>
+                    </div>
+
                     @if(auth()->id() === $tour->user_id)
                         <a class="float-right" href="{{ route('tours.edit', ['tour' => $tour]) }}">
                             <button type="submit" class="btn btn-success btn-sm">Edit
@@ -45,4 +49,14 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker').datetimepicker({
+                format: 'YYYY-MM-DD',
+                inline: true,
+                enabledDates: @json($enabledDates)
+            });
+        });
+    </script>
 @stop

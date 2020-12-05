@@ -3,17 +3,17 @@
 namespace Database\Factories;
 
 use App\Models\Tour;
-use App\Models\User;
+use App\Models\TourDate;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TourFactory extends Factory
+class TourDateFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Tour::class;
+    protected $model = TourDate::class;
 
     /**
      * Define the model's default state.
@@ -23,38 +23,37 @@ class TourFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => function () {
-                return User::factory()->create()->id;
+            'tour_id' => function () {
+                return Tour::factory()->create();
             },
-            'name' => $this->faker->sentence,
-            'itinerary' => $this->faker->text,
+            'date' => $this->faker->date(),
         ];
     }
 
     /**
-     * Indicate that the tour status is 'public'.
+     * Indicate that the tour date status is 'enabled'.
      *
      * @return Factory
      */
-    public function public()
+    public function enabled()
     {
         return $this->state(function (array $attributes) {
             return [
-                'status' => 'public',
+                'status' => 'enabled',
             ];
         });
     }
 
     /**
-     * Indicate that the question status is 'draft'.
+     * Indicate that the tour date status is 'disabled'.
      *
      * @return Factory
      */
-    public function draft()
+    public function disabled()
     {
         return $this->state(function (array $attributes) {
             return [
-                'status' => 'draft',
+                'status' => 'disabled',
             ];
         });
     }
