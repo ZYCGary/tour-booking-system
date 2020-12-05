@@ -28,8 +28,11 @@ class ToursController extends Controller
     {
         $tour = Tour::public()->findOrFail($tourId);
 
+        $enabledDates = $tour->dates()->enabled()->pluck('date')->toArray();
+
         return view('tours.show', [
-            'tour' => $tour
+            'tour' => $tour,
+            'enabledDates' => $enabledDates,
         ]);
     }
 
