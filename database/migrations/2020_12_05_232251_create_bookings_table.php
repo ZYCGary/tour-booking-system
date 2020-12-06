@@ -22,7 +22,7 @@ class CreateBookingsTable extends Migration
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
 
-//            $table->unique(['tour_id', 'tour_date']);
+            $table->index(['tour_id']);
         });
     }
 
@@ -33,6 +33,10 @@ class CreateBookingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookings');
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->dropIndex(['tour_id']);
+
+            $table->dropIfExists();
+        });
     }
 }
