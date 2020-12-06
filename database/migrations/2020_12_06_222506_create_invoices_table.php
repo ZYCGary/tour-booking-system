@@ -19,6 +19,8 @@ class CreateInvoicesTable extends Migration
             $table->double('amount')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
+
+            $table->index(['booking_id']);
         });
     }
 
@@ -29,6 +31,10 @@ class CreateInvoicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoices');
+        Schema::table('invoices', function (Blueprint $table) {
+            $table->dropIndex(['booking_id']);
+
+            $table->dropIfExists();
+        });
     }
 }

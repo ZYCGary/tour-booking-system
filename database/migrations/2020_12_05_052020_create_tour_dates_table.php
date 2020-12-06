@@ -21,6 +21,8 @@ class CreateTourDatesTable extends Migration
             $table->timestamps();
 
             $table->unique(['tour_id', 'date']);
+
+            $table->index(['tour_id']);
         });
     }
 
@@ -31,6 +33,10 @@ class CreateTourDatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tour_dates');
+        Schema::table('tour_dates', function (Blueprint $table) {
+            $table->dropIndex(['tour_id']);
+
+            $table->dropIfExists();
+        });
     }
 }
