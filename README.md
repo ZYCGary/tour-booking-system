@@ -17,7 +17,8 @@ Practically, authentication should also be used in booking functions, so that fu
 1. ```> git clone https://github.com/ZYCGary/tour-booking-system```
 2. ```> composer install``` or ```> composer update```
 3. ```> npm install -d```
-4. **Docker** is recommended to run the application
+4. Data migration & seeding: ```$ php artisan migrate:refresh --seed```
+5. **Docker** is recommended to run the application
 
 ## Testing
 Run ```$ phpunit``` to run testing code.
@@ -74,3 +75,27 @@ Run ```$ phpunit``` to run testing code.
     2. New passengers will be added
     3. New booking-passenger link will be added
     4. Links between the booking and deleted passengers will be deleted
+
+## Analysis
+According to the given business architecture, following functions are expected to be realised:
+
+### Authentication
+1. Authentication for "Tours" operations
+2. Authentication for "Bookings" operations
+
+### Tours
+1. User can delete a tour (draft/public)
+2. User can set price for a tour
+
+### Bookings
+1. User can confirm a tour booking
+2. User can cancel a tour booking
+
+### Payment
+1. An invoice can be generated after a booking
+2. User can purchase an invoice
+
+### Advanced
+1. User can re-schedule a booking after purchasing
+2. User can cancel a purchased tour can get refund
+3. The administration dashboard is needed for customer service and management
