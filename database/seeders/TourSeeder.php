@@ -18,7 +18,7 @@ class TourSeeder extends Seeder
         $data = [];
         $now = Carbon::now();
 
-        foreach (range(1, 100) as $index) {
+        foreach (range(1, 30) as $index) {
             $tour = Tour::factory()->make([
                 'user_id' => rand(1, 10),
                 'status' => rand(0, 1)

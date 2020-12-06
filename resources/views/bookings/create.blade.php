@@ -141,6 +141,7 @@
         $(function () {
             $('#datetimepicker').datetimepicker({
                 format: 'YYYY-MM-DD',
+                useCurrent: false,
                 enabledDates: @json($enabledDates ?? '')
             });
 
