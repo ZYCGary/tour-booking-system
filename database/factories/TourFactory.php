@@ -40,7 +40,7 @@ class TourFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'status' => 'public',
+                'status' => 1,
             ];
         });
     }
@@ -54,7 +54,7 @@ class TourFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'status' => 'draft',
+                'status' => 0,
             ];
         });
     }

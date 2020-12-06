@@ -31,5 +31,11 @@ class UserSeeder extends Seeder
         }
 
         User::insert($data);
+
+        // Config a default user
+        $defaultUser = User::find(1);
+        $defaultUser->name = 'Tester';
+        $defaultUser->email = 'test@test.com';
+        $defaultUser->save();
     }
 }

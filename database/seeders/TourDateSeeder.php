@@ -18,7 +18,7 @@ class TourDateSeeder extends Seeder
         $data = [];
         $now = Carbon::now();
 
-        foreach (range(1, 300) as $item) {
+        foreach (range(1, 200) as $item) {
             $year = $now->year;
             $month = $now->month;
             $day = rand(1, 28);
@@ -26,7 +26,7 @@ class TourDateSeeder extends Seeder
             $date = date("{$year}-{$month}-{$day}");
 
             $tourDate = TourDate::factory()->make([
-                'tour_id' => rand(1, 100),
+                'tour_id' => rand(1, 30),
                 'date' => $date,
                 'status' => rand(0,1)
             ]);

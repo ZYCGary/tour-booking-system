@@ -21,6 +21,8 @@ class CreateBookingPassengersTable extends Migration
             $table->timestamps();
 
             $table->unique(['booking_id', 'passenger_id']);
+
+            $table->index(['booking_id', 'passenger_id']);
         });
     }
 
@@ -31,6 +33,10 @@ class CreateBookingPassengersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('booking_passengers');
+        Schema::table('booking_passengers', function (Blueprint $table) {
+            $table->dropIndex(['booking_id', 'passenger_id']);
+
+            $table->dropIfExists();
+        });
     }
 }

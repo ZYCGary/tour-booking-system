@@ -59,7 +59,7 @@ class TourTest extends TestCase
 
         $this->assertFalse($tour->isPublic());
 
-        $tour->update(['status' => 'public']);
+        $tour->update(['status' => 1]);
 
         $this->asserttrue($tour->isPublic());
     }

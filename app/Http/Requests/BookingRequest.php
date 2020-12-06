@@ -12,28 +12,22 @@ class BookingRequest extends Request
      */
     public function rules()
     {
-        switch($this->method())
-        {
+        switch ($this->method()) {
             // CREATE
+            case 'PATCH':
+            // UPDATE
+            case 'PUT':
             case 'POST':
             {
                 return [
-                    'tour_id' => ['required'],
-                    'tour_date' => ['required'],
-                    'given_name.*' => ['required'],
-                    'surname.*' => ['required'],
-                    'email.*' => ['required'],
-                    'mobile.*' => ['required'],
-                    'dob.*' => ['required'],
-                    'passport.*' => ['required'],
-                ];
-            }
-            // UPDATE
-            case 'PUT':
-            case 'PATCH':
-            {
-                return [
-                    // UPDATE ROLES
+                    'tour_id' => 'required',
+                    'tour_date' => 'required|date_format:Y-m-d',
+                    'given_name.*' => 'required|max:128|string',
+                    'surname.*' => 'required|max:64|string',
+                    'email.*' => 'required|email|max:128',
+                    'mobile.*' => 'required|max:16|regex:/^([0-9\s\-\+\(\)]*)$/',
+                    'dob.*' => 'required|date_format:Y-m-d|before:today',
+                    'passport.*' => 'required|max:16',
                 ];
             }
             case 'GET':

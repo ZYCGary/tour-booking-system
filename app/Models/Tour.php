@@ -18,12 +18,12 @@ class Tour extends Model
 
     public function isPublic(): bool
     {
-        return $this->status === 'public';
+        return $this->status === 1;
     }
 
     public function scopePublic($query)
     {
-        return $query->whereStatus('public');
+        return $query->whereStatus(1);
     }
 
     public function scopeListings($query, User $user)
@@ -41,5 +41,10 @@ class Tour extends Model
     public function dates(): HasMany
     {
         return $this->hasMany(TourDate::class);
+    }
+
+    public function bookings(): HasMany
+    {
+        return $this->hasMany(Booking::class);
     }
 }
