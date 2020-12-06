@@ -4,19 +4,33 @@
 [![Generic badge](https://img.shields.io/badge/Nginx-1.19-green.svg)](https://www.nginx.com/)
 [![Generic badge](https://img.shields.io/badge/Mysql-5.7-green.svg)](https://www.mysql.com/)
 [![Generic badge](https://img.shields.io/badge/PHP-7.4-green.svg)](https://www.php.net/downloads.php#v7.4.13)
+## Introduction
+This Laravel application is a demo of Online Tour Booking System. It is developed via TDD(Test-drive Development).
+
+In addition to the basic requirements, an authentication procedure is added in the application for tours creation 
+and publication. 
+
+Practically, authentication should also be used in booking functions, so that further optimisations should be made.
 
 ## Installation
 
-1. ```git clone https://github.com/ZYCGary/tour-booking-system```
-2. ```composer install``` or ```composer update```
-3. ```npm install -d```
+1. ```> git clone https://github.com/ZYCGary/tour-booking-system```
+2. ```> composer install``` or ```> composer update```
+3. ```> npm install -d```
+4. **Docker** is recommended to run the application
+
+## Testing
+Run ```$ phpunit``` to run testing code.
 
 ## Functions need to be done:
 
 1. List all “Public” tours
-    - Go to the home page, click on **TOURS** at the header bar.
-2. Edit a tour
-3. Create a tour
+    - Go to the home page, click on **TOURS** at the header bar
+2. Create a tour
+    - A user must log in to create a tour
+3. Edit a tour
+    - A user must log in to edit his/her tours
+    - A user must log in to publish his/her draft tours
 4. Make a booking for a “Public” tour, and can only booking a “Enabled” tour date
 5. Edit a booking and allow user to add/remove passenger in this booking
 
@@ -52,3 +66,11 @@
     1. A user can book a public tour on an enabled tour date
     2. A user can only book a public tour
     3. A user cannot book a tour on a disabled tour date
+3. Edit a booking
+    1. A user can go to the booking editing page
+    2. A user can add/remove passengers
+4. Update a booking:
+    1. Booking details will be updated
+    2. New passengers will be added
+    3. New booking-passenger link will be added
+    4. Links between the booking and deleted passengers will be deleted
