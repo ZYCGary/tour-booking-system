@@ -4,11 +4,13 @@
 [![Generic badge](https://img.shields.io/badge/Nginx-1.19-green.svg)](https://www.nginx.com/)
 [![Generic badge](https://img.shields.io/badge/Mysql-5.7-green.svg)](https://www.mysql.com/)
 [![Generic badge](https://img.shields.io/badge/PHP-7.4-green.svg)](https://www.php.net/downloads.php#v7.4.13)
+
 ## Introduction
+
 This Laravel application is a demo of Online Tour Booking System. It is developed via TDD(Test-drive Development).
 
-In addition to the basic requirements, an authentication procedure is added in the application for tours creation 
-and publication. 
+In addition to the basic requirements, an authentication procedure is added in the application for tours creation and
+publication.
 
 Practically, authentication should also be used in booking functions, so that further optimisations should be made.
 
@@ -21,7 +23,12 @@ Practically, authentication should also be used in booking functions, so that fu
 5. **Docker** is recommended to run the application
 
 ## Testing
-Run ```$ phpunit``` to run testing code.
+
+1. Run ```$ phpunit``` to run testing code.
+2. Testing user account:
+    - name: Tester
+    - Email: test@test.com
+    - password: password
 
 ## Functions need to be done:
 
@@ -77,25 +84,31 @@ Run ```$ phpunit``` to run testing code.
     4. Links between the booking and deleted passengers will be deleted
 
 ## Analysis
+
 According to the given business architecture, following functions are expected to be realised:
 
 ### Authentication
+
 1. Authentication for "Tours" operations
 2. Authentication for "Bookings" operations
 
 ### Tours
+
 1. User can delete a tour (draft/public)
 2. User can set price for a tour
 
 ### Bookings
+
 1. User can confirm a tour booking
 2. User can cancel a tour booking
 
 ### Payment
+
 1. An invoice can be generated after a booking
 2. User can purchase an invoice
 
 ### Advanced
+
 1. User can re-schedule a booking after purchasing
 2. User can cancel a purchased tour can get refund
 3. Tour capacity may be added to enable multiple tour booking for a same date
