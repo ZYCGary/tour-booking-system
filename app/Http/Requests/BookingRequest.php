@@ -20,6 +20,12 @@ class BookingRequest extends Request
                 return [
                     'tour_id' => ['required'],
                     'tour_date' => ['required'],
+                    'given_name.*' => ['required'],
+                    'surname.*' => ['required'],
+                    'email.*' => ['required'],
+                    'mobile.*' => ['required'],
+                    'dob.*' => ['required'],
+                    'passport.*' => ['required'],
                 ];
             }
             // UPDATE

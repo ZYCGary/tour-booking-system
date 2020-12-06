@@ -4,25 +4,27 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookingsTable extends Migration
+class CreatePassengersTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * “Status” in “Booking” can only be one of these three values: 0: “Submitted”; 1: “Confirmed”; 2: “Cancelled”.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('passengers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tour_id');
-            $table->date('tour_date');
+            $table->string('given_name', 128);
+            $table->string('surname', 64);
+            $table->string('email', 128);
+            $table->string('mobile', 16);
+            $table->string('passport', 16);
+            $table->date('birth_date');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
 
-//            $table->unique(['tour_id', 'tour_date']);
+            $table->unique(['email', 'passport']);
         });
     }
 
@@ -33,6 +35,6 @@ class CreateBookingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('passengers');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Tests\Feature\Bookings;
 
+use App\Models\BookingPassenger;
+use App\Models\Passenger;
 use App\Models\Tour;
 use App\Models\TourDate;
 use Carbon\Carbon;
@@ -49,7 +51,8 @@ class CreatBookingsTest extends TestCase
 
         $formRequest = [
             'tour_id' => $tour->id,
-            'tour_date' => $enabledTourDate
+            'tour_date' => $enabledTourDate,
+            'status' => 0
         ];
 
         $this->post(route('bookings.store', $formRequest))
@@ -73,11 +76,53 @@ class CreatBookingsTest extends TestCase
 
         $formRequest = [
             'tour_id' => $tour->id,
-            'tour_date' => $disabledTourDate
+            'tour_date' => $disabledTourDate,
+            'status' => 0
         ];
 
         $this->post(route('bookings.store', $formRequest))
             ->assertRedirect(route('bookings.create', ['tour' => $tour->id]));
+    }
+
+    /**
+     * Testing a user can add passengers in a tour booking.
+     *
+     * @test
+     * @covers \App\Http\Controllers\BookingsController
+     */
+    public function user_can_add_passengers()
+    {
+        $data = $this->initATour();
+        $tour = $data['tour'];
+        $enabledTourDate = $data['enabledTourDate1']->date;
+
+        $passengers = [
+            'given_name' => ['Gary', 'Lily'],
+            'surname' => ['Zhang', 'Wang'],
+            'email' => ['gary@test.com', 'lily@test.com'],
+            'mobile' => ['0123456', '1234567'],
+            'passport' => ['E012345', 'E123456'],
+            'dob' => ['1993-03-03', '1992-04-25']
+        ];
+
+        $formRequest = [
+            'tour_id' => $tour->id,
+            'tour_date' => $enabledTourDate,
+            'status' => 0,
+            'given_name' => $passengers['given_name'],
+            'surname' => $passengers['surname'],
+            'email' => $passengers['email'],
+            'mobile' => $passengers['mobile'],
+            'passport' => $passengers['passport'],
+            'dob' => $passengers['dob'],
+            'special_request' => ['', 'Lily request']
+        ];
+
+        $this->post(route('bookings.store', $formRequest))
+            ->assertStatus(302);
+
+        $this->assertCount(2, Passenger::all());
+        $this->assertCount(2, BookingPassenger::all());
     }
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\BookingCreated;
 use App\Http\Requests\BookingRequest;
 use App\Models\Booking;
 use App\Models\Tour;
@@ -11,7 +12,7 @@ class BookingsController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::submitted()->with('tour')->paginate(20);
+        $bookings = Booking::with('tour')->paginate(20);
 
         return view('bookings.index', [
             'bookings' => $bookings
@@ -33,6 +34,7 @@ class BookingsController extends Controller
     {
         $tour_id = $request->input('tour_id');
         $tour_date = $request->input('tour_date');
+        $status = $request->input('status');
 
         $enabledDates = Tour::findOrFail($tour_id)->dates()->enabled()->pluck('date')->toArray();
 
@@ -40,11 +42,13 @@ class BookingsController extends Controller
             return redirect(route('bookings.create', ['tour' => $tour_id]));
         }
 
-        Booking::create([
+        $booking = Booking::create([
             'tour_id' => $request->input('tour_id'),
             'tour_date' => $request->input('tour_date'),
-            'status' => 0
+            'status' => $status
         ]);
+
+        event(new BookingCreated($request, $booking));
 
         return redirect(route('bookings.index'));
     }
