@@ -28,6 +28,7 @@ class Booking extends Model
 
     public function passengers(): BelongsToMany
     {
-        return $this->belongsToMany(Passenger::class, 'booking_passengers');
+        return $this->belongsToMany(Passenger::class, 'booking_passengers')
+            ->withPivot('special_request');
     }
 }

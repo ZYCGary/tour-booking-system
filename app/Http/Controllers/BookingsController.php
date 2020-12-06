@@ -52,4 +52,18 @@ class BookingsController extends Controller
 
         return redirect(route('bookings.index'));
     }
+
+    public function edit(Booking $booking)
+    {
+        $tour = $booking->tour;
+        $enabledDates = $tour->dates()->enabled()->pluck('date')->toArray();
+        $passengers = $booking->passengers;
+
+        return view('bookings.edit', [
+            'tour' => $tour,
+            'enabledDates' => $enabledDates,
+            'booking' => $booking,
+            'passengers' => $passengers
+        ]);
+    }
 }
