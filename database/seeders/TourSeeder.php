@@ -17,12 +17,11 @@ class TourSeeder extends Seeder
     {
         $data = [];
         $now = Carbon::now();
-        $status = ['public', 'draft'];
 
         foreach (range(1, 100) as $index) {
             $tour = Tour::factory()->make([
                 'user_id' => rand(1, 10),
-                'status' => $status[array_rand($status)]
+                'status' => rand(0, 1)
             ]);
 
             $data[] = [

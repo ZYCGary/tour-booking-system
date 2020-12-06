@@ -18,7 +18,7 @@ class CreateToursTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('itinerary');
-            $table->string('status')->default('draft');
+            $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });
     }

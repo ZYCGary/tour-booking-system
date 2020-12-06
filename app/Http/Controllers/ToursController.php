@@ -96,7 +96,7 @@ class ToursController extends Controller
         $this->authorize('update', $tour);
 
         $tour->update([
-            'status' => 'public'
+            'status' => 1
         ]);
 
         return redirect(route('tours.show', ['tour' => $tour->id]));
