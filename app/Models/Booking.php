@@ -31,4 +31,9 @@ class Booking extends Model
         return $this->belongsToMany(Passenger::class, 'booking_passengers')
             ->withPivot('special_request');
     }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
 }
