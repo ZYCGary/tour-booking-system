@@ -14,11 +14,11 @@ class TourDate extends Model
 
     public function scopeEnabled($query)
     {
-        $query->whereStatus('enabled');
+        $query->whereStatus(1);
     }
 
     public function scopeDisabled($query)
     {
-        $query->whereStatus('disabled');
+        $query->whereStatus(0);
     }
 }
