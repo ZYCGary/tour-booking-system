@@ -12,6 +12,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="{{ route('tours.index') }}">TOURS</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('bookings.index') }}">BOOKINGS</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->

@@ -43,3 +43,12 @@
     1. A guest cannot edit a tour draft
     2. A logged-in user can edit a tour he/she made.
     3. A logged-in user can only edit his/her tours.
+
+### Bookings
+
+1. View bookings
+    1. A user can view the booking list
+2. Book a tour
+    1. A user can book a public tour on an enabled tour date
+    2. A user can only book a public tour
+    3. A user cannot book a tour on a disabled tour date

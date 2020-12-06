@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingsController;
 use App\Http\Controllers\ListingsController;
 use App\Http\Controllers\ToursController;
 use Illuminate\Support\Facades\Auth;
@@ -27,5 +28,11 @@ Route::put('/tours/{tour}', [ToursController::class, 'update'])->name('tours.upd
 Route::post('/tours/{tour}/publish', [ToursController::class, 'publish'])->name('tours.publish');
 
 Route::get('/listings', [ListingsController::class, 'index'])->name('listings.index');
+
+Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.index');
+Route::get('/bookings/book/{tour}', [BookingsController::class, 'create'])->name('bookings.create');
+Route::post('/bookings', [BookingsController::class, 'store'])->name('bookings.store');
+Route::get('/bookings/{booking}/edit', [BookingsController::class, 'edit'])->name('bookings.edit');
+Route::put('/bookings/{booking}', [BookingsController::class, 'update'])->name('bookings.update');
 
 

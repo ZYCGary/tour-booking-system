@@ -9,10 +9,10 @@
             <div class="card ">
                 <div class="card-body">
                     {{-- Tour list --}}
-                    @if (count($tours))
+                    @if (count($bookings))
                         <ul class="list-unstyled">
-                            @foreach ($tours as $tour)
-                                @include('tours._tour')
+                            @foreach ($bookings as $booking)
+                                @include('bookings._booking')
 
                                 @if ( ! $loop->last)
                                     <hr>
@@ -27,7 +27,7 @@
 
                     {{-- Pagination --}}
                     <div class="mt-5">
-                        {{ $tours->links() }}
+                        {{ $bookings->links() }}
                     </div>
                     {{-- Pagination end --}}
 
@@ -38,8 +38,8 @@
         <div class="col-lg-3 col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ route('tours.create') }}">
-                        <button type="submit" class="btn btn-success btn ml-2">Create A Tour
+                    <a href="{{ route('tours.index') }}">
+                        <button type="submit" class="btn btn-success btn ml-2">Book A Tour
                         </button>
                     </a>
                 </div>
