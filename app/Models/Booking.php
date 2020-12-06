@@ -13,6 +13,8 @@ class Booking extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function scopeSubmitted($query)
     {
         return $query->whereStatus(0);

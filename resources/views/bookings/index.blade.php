@@ -21,7 +21,7 @@
                             @endforeach
                         </ul>
                     @else
-                        <div class="empty-block">暂无数据 ~_~ </div>
+                        <div class="empty-block">No data ~_~ </div>
                     @endif
                     {{-- Tour list end --}}
 
@@ -31,6 +31,17 @@
                     </div>
                     {{-- Pagination end --}}
 
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <a href="{{ route('tours.index') }}">
+                        <button type="submit" class="btn btn-success btn ml-2">Book A Tour
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

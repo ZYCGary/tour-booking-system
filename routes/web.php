@@ -30,5 +30,7 @@ Route::post('/tours/{tour}/publish', [ToursController::class, 'publish'])->name(
 Route::get('/listings', [ListingsController::class, 'index'])->name('listings.index');
 
 Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.index');
+Route::get('/bookings/book/{tour}', [BookingsController::class, 'create'])->name('bookings.create');
+Route::post('/bookings', [BookingsController::class, 'store'])->name('bookings.store');
 
 
