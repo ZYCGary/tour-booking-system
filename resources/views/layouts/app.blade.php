@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Zhihu') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }} " defer></script>
+    <script src="{{ mix('js/app.js') }} "></script>
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -32,4 +32,5 @@
     <flash message="{{ session('flash') }}"></flash>
 </div>
 </body>
+
 </html>

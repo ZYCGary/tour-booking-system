@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Tour;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TourFactory extends Factory
@@ -22,13 +23,16 @@ class TourFactory extends Factory
     public function definition()
     {
         return [
+            'user_id' => function () {
+                return User::factory()->create()->id;
+            },
             'name' => $this->faker->sentence,
             'itinerary' => $this->faker->text,
         ];
     }
 
     /**
-     * Indicate that the question status is 'public'.
+     * Indicate that the tour status is 'public'.
      *
      * @return Factory
      */
