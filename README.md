@@ -98,4 +98,5 @@ According to the given business architecture, following functions are expected t
 ### Advanced
 1. User can re-schedule a booking after purchasing
 2. User can cancel a purchased tour can get refund
-3. The administration dashboard is needed for customer service and management
+3. Tour capacity may be added to enable multiple tour booking for a same date
+4. The administration dashboard is needed for customer service and management
