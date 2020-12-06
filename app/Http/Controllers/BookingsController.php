@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Events\BookingCreated;
+use App\Events\BookingUpdated;
 use App\Http\Requests\BookingRequest;
 use App\Models\Booking;
+use App\Models\Passenger;
 use App\Models\Tour;
 use Illuminate\Http\Request;
+use Mockery\Generator\StringManipulation\Pass\Pass;
 
 class BookingsController extends Controller
 {
@@ -65,5 +68,29 @@ class BookingsController extends Controller
             'booking' => $booking,
             'passengers' => $passengers
         ]);
+    }
+
+    public function update(BookingRequest $request, Booking $booking)
+    {
+        $tour_id = $request->input('tour_id');
+        $tour_date = $request->input('tour_date');
+        $status = $request->input('status');
+
+        $enabledDates = Tour::findOrFail($tour_id)->dates()->enabled()->pluck('date')->toArray();
+
+        if (!in_array($tour_date, $enabledDates)) {
+            return redirect(route('bookings.create', ['tour' => $tour_id]));
+        }
+
+        $booking->update([
+            'tour_id' => $request->input('tour_id'),
+            'tour_date' => $request->input('tour_date'),
+            'status' => $status
+        ]);
+
+
+        event(new BookingUpdated($request, $booking));
+
+        return redirect(route('bookings.index'));
     }
 }

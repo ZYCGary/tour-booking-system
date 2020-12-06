@@ -28,7 +28,9 @@ class BookingPassengerFactory extends Factory
             'booking_id' => function () {
                 return create(Booking::class)->id;
             },
-            'passenger_id' => create(Passenger::class)->id,
+            'passenger_id' =>function () {
+                return create(Passenger::class)->id;
+            },
             'special_request' => $this->faker->text()
         ];
     }

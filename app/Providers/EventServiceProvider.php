@@ -3,11 +3,14 @@
 namespace App\Providers;
 
 use App\Events\BookingCreated;
+use App\Events\BookingUpdated;
 use App\Events\TourCreated;
 use App\Events\TourUpdated;
 use App\Listeners\CreateBookingPassenger;
 use App\Listeners\CreatePassengers;
 use App\Listeners\CreateTourDates;
+use App\Listeners\UpdateBookingPassenger;
+use App\Listeners\UpdatePassengers;
 use App\Listeners\UpdateTourDates;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -34,6 +37,10 @@ class EventServiceProvider extends ServiceProvider
         BookingCreated::class => [
             CreatePassengers::class,
             CreateBookingPassenger::class
+        ],
+        BookingUpdated::class => [
+            UpdatePassengers::class,
+            UpdateBookingPassenger::class
         ]
     ];
 

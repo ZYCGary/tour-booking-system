@@ -15,8 +15,11 @@
                         {{ $tour->itinerary }}
                     </div>
 
-                    <form action="{{ route('bookings.store') }}" method="POST" accept-charset="UTF-8">
+                    <form action="{{ route('bookings.update', ['booking' => $booking->id]) }}" method="POST"
+                          accept-charset="UTF-8">
                         @csrf
+
+                        @method('PUT')
 
                         @include('shared._error')
 
@@ -58,7 +61,7 @@
                         <div class="well well-sm">
                             <button type="submit" class="btn btn-primary"><i
                                     class="far fa-save mr-2" aria-hidden="true">
-                                </i> BOOK
+                                </i> SAVE
                             </button>
                         </div>
                     </form>

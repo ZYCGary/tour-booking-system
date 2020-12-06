@@ -33,5 +33,6 @@ Route::get('/bookings', [BookingsController::class, 'index'])->name('bookings.in
 Route::get('/bookings/book/{tour}', [BookingsController::class, 'create'])->name('bookings.create');
 Route::post('/bookings', [BookingsController::class, 'store'])->name('bookings.store');
 Route::get('/bookings/{booking}/edit', [BookingsController::class, 'edit'])->name('bookings.edit');
+Route::put('/bookings/{booking}', [BookingsController::class, 'update'])->name('bookings.update');
 
 
