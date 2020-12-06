@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\TourCreated;
 use App\Events\TourUpdated;
+use App\Http\Requests\TourRequest;
 use App\Models\Tour;
 use http\Env\Response;
 use Illuminate\Http\Request;
@@ -36,7 +37,7 @@ class ToursController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(TourRequest $request)
     {
         $tour = Tour::create([
             'user_id' => auth()->id(),
@@ -71,7 +72,7 @@ class ToursController extends Controller
         ]);
     }
 
-    public function update(Request $request, Tour $tour)
+    public function update(TourRequest $request, Tour $tour)
     {
         $this->authorize('update', $tour);
 

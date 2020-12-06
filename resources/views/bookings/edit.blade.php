@@ -148,6 +148,7 @@
         $(function () {
             $('#datetimepicker').datetimepicker({
                 format: 'YYYY-MM-DD',
+                useCurrent: false,
                 defaultDate: @json($booking->tour_date),
                 enabledDates: @json($enabledDates ?? '')
             });
